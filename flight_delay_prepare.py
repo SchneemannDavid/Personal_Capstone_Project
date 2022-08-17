@@ -50,6 +50,9 @@ def clean_variables(df):
 def feature_engineering(df):
     # Create feature that takes sum of `ArrDelay` & `DepDelay`; in minutes
     df['total_delay'] = (df['ArrDelay'] + df['DepDelay'])
+    # Create feature of difference between actual total time and scheduled total time
+    df['total_time_diff'] = df['total_time'] - df['scheduled_total_time']
+
     # Converting `total_delay` to integer dtype
     df["total_delay"] = df["total_delay"].astype(int)
     ### Binning Vars ###
