@@ -55,11 +55,6 @@ def feature_engineering(df):
 
     # Converting `total_delay` to integer dtype
     df["total_delay"] = df["total_delay"].astype(int)
-    ### Binning Vars ###
-    # Binning `dayofmonth` into 4 weeks (`week_of_month`)
-    # df['week_of_month'] = pd.cut(x=df['dayofmonth'], bins = [0, 8, 16, 23, 31], labels = ['week_1', 'week_2', 'week_3', 'week_4'])
-    # Binning `total_delay`?
-
 
     # Create var for creating dummies
     df['month'] = df['Month']
@@ -75,7 +70,19 @@ def feature_engineering(df):
     df = pd.get_dummies(df, prefix='uniq_carr', columns=['carrier'])
 
     # Drop 'ArrDelay' & 'DepDelay' columns (variable has direct relationship with target variable)
-
+    df = df.drop(columns='Year', axis =1)
+    df = df.drop(columns='ArrDelay', axis =1)
+    df = df.drop(columns='DepDelay', axis =1)
+    df = df.drop(columns='CarrierDelay', axis =1)
+    df = df.drop(columns='WeatherDelay', axis =1)
+    df = df.drop(columns='NASDelay', axis =1)
+    df = df.drop(columns='SecurityDelay', axis =1)
+    df = df.drop(columns='LateAircraftDelay', axis =1)
+    df = df.drop(columns='FlightNum', axis =1)
+    df = df.drop(columns='TailNum', axis =1)
+    df = df.drop(columns='Cancelled', axis =1)
+    df = df.drop(columns='Diverted', axis =1)
+    df = df.drop(columns='Dest', axis =1)
 
     return df
 

@@ -10,7 +10,7 @@ import seaborn as sns
 # Function which plots a categorical and continuous var
 
 def plot_categorical_and_continuous_vars(df, categorical, continuous):
-    df_sample = df.sample(10000)
+    df_sample = df.sample(5000)
     plt.figure()
     sns.countplot(x=categorical, data=df_sample)
     plt.figure()
@@ -23,7 +23,7 @@ def plot_categorical_and_continuous_vars(df, categorical, continuous):
 # Function which plots two continuous vars
 
 def plot_continuous_and_continuous_vars(df, continuous1, continuous2):
-    df_sample = df.sample(10000)
+    df_sample = df.sample(5000)
     #plt.figure()
     #sns.relplot(x=continuous1, y=continuous2, data=df_sample, kind='scatter')
     plt.figure()
