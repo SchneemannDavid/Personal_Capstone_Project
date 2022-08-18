@@ -24,16 +24,6 @@ def optimize_types(df):
     df["AirTime"] = df["AirTime"].astype(int)
     return df
 
-# def handle_outliers(df):
-    """Manually handle outliers that do not represent properties likely for 99% of buyers and zillow visitors"""
-    df = df[df.bathroomcnt <= 6]
-    
-    df = df[df.bedroomcnt <= 6]
-
-    df = df[df.taxvaluedollarcnt < 1_500_000]
-
-    return df
-
 def clean_variables(df):
     # Rename columns and 'fips' values to reflect actual location (to solidify column as categorical variable)
     df = df.rename(columns = {'DayofMonth':'dayofmonth', 
@@ -140,8 +130,6 @@ def prep_flight_delay(df):
     df = handle_nulls(df)
 
     df = optimize_types(df)
-
-    # df = handle_outliers(df)
 
     df = clean_variables(df)
 
